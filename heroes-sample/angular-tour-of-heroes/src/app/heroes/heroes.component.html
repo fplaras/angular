@@ -1,14 +1,19 @@
-
-  <h2 class="mt-4 mb-3">{{hero.name}} Details</h2>
-  <p>id: {{hero.id}} <br>  name: {{hero.name}}</p>
+<h2 class="mt-4 mb-3">{{ hero.name }} Details</h2>
+<p>
+  id: {{ hero.id }} <br />
+  name: {{ hero.name }}
+</p>
 
 <!--Usign pipes-->
-<h2 class="mt-4 mb-3">{{hero.name | uppercase}} Details <small >Using Uppercase Pipe</small></h2>
+<h2 class="mt-4 mb-3">
+  {{ hero.name | uppercase }} Details <small>Using Uppercase Pipe</small>
+</h2>
 
 <!--Two way binding requires form module-->
 <div class="mt-4 mb-3">
-  <label>name:
-    <input class="form-control" [(ngModel)]="hero.name" placeholder="name"/>
+  <label
+    >name:
+    <input class="form-control" [(ngModel)]="hero.name" placeholder="name" />
   </label>
 </div>
 
@@ -16,33 +21,42 @@
 <h2>My Heroes</h2>
 <ul class="">
   <li *ngFor="let heroItem of heroList">
-    ID: {{heroItem.id}} Name: {{heroItem.name | uppercase}}
+    ID: {{ heroItem.id }} Name: {{ heroItem.name | uppercase }}
   </li>
 </ul>
 
 <div class="row">
-<div class="col-sm-6 border-right">
-<!--Heroes List clickable-->
-<h2>My Heroes Clickable</h2>
-<ul class="">
-  <li class="btn btn-secondary border" *ngFor="let heroItem of heroList" (click)="onSelect(heroItem)">
-    ID: {{heroItem.id}} Name: {{heroItem.name | uppercase}}
-  </li>
-</ul>
-
-</div>
-<div class="col-sm-6">
-<!--Edited Hero-->
-<h2>Selected Hero</h2>
-
-<div *ngIf="selectedHero">
-    <h4>{{selectedHero.name | uppercase}} Details</h4>
-    <div><span>id: </span>{{selectedHero.id}}</div>
-    <div>
-      <label>name:
-        <input class="form-control" [(ngModel)]="selectedHero.name" placeholder="name"/>
-      </label>
-    </div>
-    </div>
-</div>
+  <div class="col-sm-6 border-right">
+    <!--Heroes List clickable-->
+    <!--the below list features class binding to alter css on selection-->
+    <!-- <h2>My Heroes Clickable</h2>
+    <ul class="">
+      <li
+        class="btn btn-secondary border"
+        [class.btn-secondary]="heroItem === selectedHero"
+        *ngFor="let heroItem of heroList"
+        (click)="onSelect(heroItem)"
+      >
+        ID: {{ heroItem.id }} Name: {{ heroItem.name | uppercase }}
+      </li>
+    </ul> -->
+    <h2>My Heroes Clickable</h2>
+    <ul class="">
+      <li
+        class="btn btn-secondary border"
+        [class.btn-secondary]="heroItem === selectedHero"
+        *ngFor="let heroItem of heroList"
+        routerLink="/detail/{{ heroItem.id }}"
+      >
+        ID: {{ heroItem.id }} Name: {{ heroItem.name | uppercase }}
+      </li>
+    </ul>
+  </div>
+  <div class="col-sm-6">
+    <!--Edited Hero-->
+    <h2>Selected Hero</h2>
+    <!--Angular property binding-->
+    <!--One way data binding from selected hero property-->
+    <!-- <app-hero-detail [hero]="selectedHero"></app-hero-detail> -->
+  </div>
 </div>

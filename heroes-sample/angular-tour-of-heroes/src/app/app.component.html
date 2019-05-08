@@ -2,13 +2,26 @@
 <!-- Navigation -->
 <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark fixed-top">
   <div class="container">
-    <a class="navbar-brand" >{{title}}</a>
-    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand">{{ title }}</a>
+    <button
+      class="navbar-toggler navbar-toggler-right"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarResponsive"
+      aria-controls="navbarResponsive"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav ml-auto">
-       
+        <li>
+          <a [routerLink]="['/heroes']">HEROES</a>
+        </li>
+        <li>
+          <a [routerLink]="['/dashboard']">DASHBOARD</a>
+        </li>
       </ul>
     </div>
   </div>
@@ -16,9 +29,14 @@
 
 <!-- Page Content -->
 <div class="container">
-<div style="text-align:center">
-  <img src="http://static.usbankarena.com/images/events/5aa1b61613119.jpg" class="img-fluid w-50 h-50">
-</div>
-<app-heroes></app-heroes>
-<!-- <router-outlet></router-outlet> -->
+  <div style="text-align:center">
+    <img
+      src="http://static.usbankarena.com/images/events/5aa1b61613119.jpg"
+      class="img-fluid w-50 h-50"
+    />
+  </div>
+  <!-- <app-heroes></app-heroes>-->
+  <!--router outlets tells where to display the routed views-->
+  <router-outlet></router-outlet>
+  <app-messages></app-messages>
 </div>
